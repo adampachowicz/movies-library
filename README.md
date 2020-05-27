@@ -1,8 +1,8 @@
 ## Jak uruchomić
 
-1. Plik `.env`
+1. Plik `.env.example` skopiować i utworzyć `.env` a w nim
 
-    Należy podać dostępy do bazy danych w polach
+    należy podać dostępy do bazy danych w polach
     np.
     
     `DB_CONNECTION=mysql`<br />
@@ -15,22 +15,39 @@
  2. Composer
  
     `composer install`
+    
+ 3. Generowanie klucza
  
- 3. Migracja bazy danych
+    `php artisan key:generate`
+ 
+ 4. Migracja bazy danych
  
     `php artisan migrate`
- 
- 4. Jeżeli chcemy uzupełnić bazę fakowymi danymi
+
+  5. Utworzenie folderu
+
+      w folderze public utworzenie folderu `files` 
+
+ 6. Jeżeli chcemy uzupełnić bazę fake- owymi danymi
  
     `php artisan db:seed`
  
- 5. Instalacja passport klienta
- 
-    `php artisan passport:install --client`
+ 7. Instalacja passport klienta
+
+   `php artisan passport:install`
     
- 6. Uruchomianie
+ 8. Uruchomianie
  
     `php artisan serve`
+
+    INFORMACYJNIE !!!
+    W przypadku błędu z `fruitcake/laravel-cors`
+
+   `composer remove fruitcake/laravel-cors`
+   `composer require asm89/stack-cors "2.0.0"`
+   `composer require fruitcake/laravel-cors "2.0.0"`
+
+    `https://github.com/fruitcake/laravel-cors/issues/458`
     
  
  ## O aplikacji
@@ -58,23 +75,22 @@
    `password` | Hasło
     
    W odpowiedzi otrzymamy `access_token`
- 
-   Aplikacja posiada 5 endpointów głównych które pozwalają na dodawanie, listowanie, usuwanie, edycję oraz szukanie po tytule
    
    ### Wylogowanie
-   
-   `GET` `logout`
-   
+      
+    `GET` `logout`
+      
    Headers `access_token` zwrócony wczasie logowania
-   
-   
+      
+      
    ### Użytkownik
-   
+      
    Informacje na temat użytkownika musimy być zalogowani tokenem
-   
-   `GET` `user`
-   
+      
+    `GET` `user`
  
+   Aplikacja posiada 5 endpointów głównych które pozwalają na dodawanie, listowanie, usuwanie, edycję oraz szukanie po tytule
+    
  ### Dodawanie filmu
  
   `POST` `/movies`
